@@ -1,14 +1,16 @@
-// discount-modal.js
-
 document.addEventListener("DOMContentLoaded", () => {
     // Get modal and buttons
     const discountModal = document.getElementById("discount-modal");
     const closeModal = document.getElementById("close-modal");
 
-    // Show the modal after a delay (e.g., 5 seconds)
-    setTimeout(() => {
+    // Check if the modal has already been shown
+    if (!localStorage.getItem("modalShown")) {
+        // Show the modal immediately
         discountModal.style.display = "block";
-    }, 5000);
+
+        // Mark the modal as shown in localStorage
+        localStorage.setItem("modalShown", "true");
+    }
 
     // Close modal when the close button is clicked
     closeModal.addEventListener("click", () => {
