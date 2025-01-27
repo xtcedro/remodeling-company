@@ -1,1 +1,457 @@
+/* Appointments Container */
+.appointments-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem; /* Space between cards */
+    justify-content: center; /* Center cards horizontally */
+    margin-top: 2rem;
+}
 
+/* Appointment Card */
+.appointment-card {
+    background: #FFFFFF; /* White background for cards */
+    color: #FF4500; /* Orange text */
+    padding: 1.5rem;
+    border: 2px solid #FF4500; /* Orange border for separation */
+    border-radius: 8px; /* Smooth edges */
+    width: 300px; /* Fixed card width */
+    box-shadow: 0 4px 10px rgba(255, 69, 0, 0.5); /* Subtle orange shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.appointment-card:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 6px 15px rgba(255, 69, 0, 0.7); /* Stronger shadow on hover */
+}
+
+.appointment-card h2 {
+    font-size: 1.5rem; /* Title size for cards */
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #FF4500, #FF6347, #FF8C00); /* Orange gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Transparent gradient */
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.appointment-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #FF6347; /* Softer orange text for details */
+    margin-bottom: 0.5rem;
+}
+
+/* Base Styles for the Response Message */
+.response-message {
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    display: none; /* Initially hidden */
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Success Message Styles */
+.response-message.success {
+    color: #FF4500; /* Orange text */
+    background-color: rgba(255, 69, 0, 0.2); /* Light orange background */
+    border: 1px solid #FF4500; /* Orange border */
+}
+
+/* Error Message Styles */
+.response-message.error {
+    color: #FF4500; /* Orange text */
+    background-color: rgba(255, 69, 0, 0.2); /* Light orange background */
+    border: 1px solid #FF4500; /* Orange border */
+}
+
+/* Language Modal */
+.modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 69, 0, 0.9); /* Slightly darker orange */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow: hidden; /* Prevents scrolling when the modal is open */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Modal Content */
+.modal-content {
+    background: linear-gradient(145deg, #FFFFFF, #FFFAF0); /* Light white gradient */
+    color: #FF4500; /* Vibrant orange text */
+    padding: 2rem;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(255, 69, 0, 0.5); /* Orange shadow */
+    max-width: 500px;
+    width: 90%;
+    font-size: 1.5rem;
+    animation: fadeIn 0.5s ease-in-out; /* Fade-in animation */
+}
+
+/* Modal Title */
+.modal-content h2 {
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #FF4500, #FF6347, #FF8C00); /* Orange gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Transparent text with gradient */
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Language Options */
+.language-options {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap; /* Wrap buttons if needed on smaller screens */
+}
+
+/* Language Buttons */
+.language-options button {
+    background: linear-gradient(145deg, #FFFFFF, #FFFAF0); /* Light white gradient */
+    color: #FF4500; /* Vibrant orange text */
+    padding: 1rem 2rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Space between text and flag */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 69, 0, 0.5); /* Orange shadow */
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Hover Effect for Buttons */
+.language-options button:hover {
+    background: #FF4500; /* Vibrant orange background on hover */
+    color: #FFFFFF; /* White text on hover */
+    transform: scale(1.1); /* Slight zoom */
+    box-shadow: 0 6px 15px rgba(255, 69, 0, 0.6); /* Stronger orange shadow on hover */
+}
+
+/* Flag Icons */
+.flag-icon {
+    width: 30px;
+    height: 20px;
+    border-radius: 3px; /* Slightly rounded flags */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow on flags */
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #FFFFFF; /* White for nav background */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    flex-wrap: wrap;
+    position: relative;
+    border-bottom: 2px solid #FF4500; /* Orange border at the bottom */
+    box-shadow: 0 2px 5px rgba(255, 69, 0, 0.4); /* Subtle orange shadow for depth */
+}
+
+/* Navigation Links */
+nav a {
+    color: #FF8C00; /* Orange text for links */
+    text-decoration: none; /* Removes underline */
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1rem;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 0.5rem 1rem; /* Padding for better spacing */
+    border-radius: 5px; /* Smooth edges */
+}
+
+nav a:hover {
+    color: #FFFFFF; /* White text on hover */
+    background-color: #FF8C00; /* Orange background on hover */
+}
+
+/* Blockquote Styling */
+blockquote {
+    font-style: italic;
+    background-color: #F5F5F5; /* Light gray background */
+    padding: 1.5rem;
+    border-left: 5px solid #FF8C00; /* Orange border */
+    border-radius: 5px;
+    font-size: 1.1rem;
+    margin: 2rem auto;
+    color: #FF8C00; /* Orange text */
+    max-width: 700px;
+}
+
+/* Hero Quote Styling */
+.hero-quote {
+    font-style: italic;
+    font-size: 1.5rem; /* Slightly larger font for emphasis */
+    color: #FF8C00; /* Orange text */
+    background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white background */
+    padding: 1.5rem;
+    border-left: 5px solid #FF8C00; /* Orange border on the left */
+    border-radius: 5px;
+    max-width: 800px;
+    margin: 2rem auto;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Subtle shadow for depth */
+}
+
+.hero-quote em {
+    color: #FF8C00; /* Orange color for emphasized text */
+    font-weight: bold;
+    display: block;
+    margin-top: 0.5rem;
+}
+
+.hero-quote::before {
+    content: '“'; /* Opening quotation mark */
+    font-size: 2rem;
+    color: #FF8C00; /* Orange color */
+    margin-right: 5px;
+    vertical-align: top;
+}
+
+.hero-quote::after {
+    content: '”'; /* Closing quotation mark */
+    font-size: 2rem;
+    color: #FF8C00; /* Orange color */
+    margin-left: 5px;
+    vertical-align: bottom;
+}
+
+/* Adjusted Title Banner */
+.title-banner {
+    width: 100vw;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    overflow: hidden;
+    background-color: #FFFFFF; /* White background for the banner */
+}
+
+.title-banner img {
+    display: block;
+    width: 100vw;
+    height: auto;
+    margin: 0 auto;
+    object-fit: cover;
+    border-bottom: 4px solid #FF8C00; /* Orange border below the image */
+}
+
+/* Features Container */
+.features-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+/* Feature Item */
+.feature-item {
+    width: calc(33.33% - 1rem); /* 3 items per row with spacing */
+    background-color: #FFFFFF; /* White background */
+    border: 2px solid #FF8C00; /* Orange border */
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+.feature-item:hover {
+    transform: translateY(-5px); /* Lift the card slightly on hover */
+    box-shadow: 0 8px 12px rgba(255, 140, 0, 0.5); /* Enhance orange shadow on hover */
+}
+
+.feature-item h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #FF8C00; /* Orange for subtitles */
+}
+
+.feature-item p {
+    font-size: 1rem;
+    color: #000000; /* Black text */
+    line-height: 1.5;
+}
+
+/* Social Links */
+.social-links {
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+/* Social Link Styles */
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    color: #FF4500; /* Orange text */
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    background-color: #FFFFFF; /* White background for links */
+    border: 2px solid #FF4500; /* Orange border */
+}
+
+.social-link:hover {
+    background-color: #FF4500; /* Bright orange hover effect */
+    color: #FFFFFF; /* White text on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 4px 10px rgba(255, 69, 0, 0.5); /* Subtle orange shadow */
+}
+
+/* Social Icon Styles */
+.social-icon {
+    width: 44px;
+    height: 44px;
+    margin-right: 8px;
+    vertical-align: middle;
+    border-radius: 5px; /* Slightly rounded corners for icons */
+    background-color: #FF6347; /* Light orange background for icons */
+    box-shadow: 0 2px 5px rgba(255, 69, 0, 0.3); /* Subtle shadow for depth */
+}
+
+/* Services Container */
+.services-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.service-item {
+    background: #FFFFFF; /* White background */
+    padding: 1.5rem;
+    border: 2px solid #FF4500; /* Orange border */
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(255, 69, 0, 0.5); /* Orange shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #FF4500; /* Orange text */
+}
+
+.service-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(255, 69, 0, 0.7); /* Stronger orange shadow on hover */
+}
+
+.service-item h3 {
+    background: linear-gradient(135deg, #FF4500, #FF6347); /* Orange gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Projects Gallery Figure */
+.projects-gallery figure {
+    max-width: 300px;
+    text-align: center;
+    background-color: #FFFFFF; /* White background for figure */
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #FF4500; /* Orange border for each figure */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.projects-gallery figure:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    box-shadow: 0 6px 12px rgba(255, 69, 0, 0.7); /* Stronger orange shadow on hover */
+}
+
+.projects-gallery img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-bottom: 2px solid #FF4500; /* Orange border below the image */
+}
+
+.projects-gallery figcaption {
+    padding: 0.5rem;
+    font-size: 1rem;
+    color: #FF4500; /* Orange text for captions */
+    background: linear-gradient(135deg, #FFFFFF, #FFFAF0); /* Subtle white gradient */
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: inset 0 2px 5px rgba(255, 69, 0, 0.3); /* Inner shadow for depth */
+}
+
+/* Why Choose Us Blockquote */
+.why-choose-us blockquote {
+    font-style: italic;
+    background-color: #FFF5E6; /* Light orange/white background */
+    color: #FF4500; /* Orange text */
+    padding: 1.5rem;
+    margin: 2rem auto;
+    border-left: 5px solid #FF4500; /* Orange border on the left */
+    border-radius: 5px;
+    font-size: 1.2rem;
+    max-width: 800px;
+}
+
+/* Legal Notice */
+.legal-notice {
+    font-size: 0.9rem; /* Adjust the font size for readability */
+    color: #FF4500; /* Orange text */
+    text-align: center; /* Center-align the content */
+    margin: 20px 0; /* Add spacing above and below the div */
+}
+
+.legal-notice a {
+    color: #FF6347; /* Softer orange link color */
+    text-decoration: none; /* Remove underline from the link */
+}
+
+.legal-notice a:hover {
+    text-decoration: underline; /* Add underline on hover for emphasis */
+    color: #FF4500; /* Brighter orange on hover */
+}
+
+/* Legal Links */
+.legal-links {
+    list-style-type: none; /* Removes default bullet points */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Aligns items horizontally */
+    justify-content: center; /* Centers items */
+    gap: 20px; /* Adds spacing between items */
+    font-size: 1rem;
+    color: #FF4500; /* Orange text color */
+}
+
+.legal-links li {
+    display: inline; /* Ensures list items are inline */
+}
+
+.legal-links a {
+    text-decoration: none; /* Remove underline */
+    color: #FF4500; /* Orange text for links */
+    font-weight: bold; /* Makes links bold */
+    transition: color 0.3s ease, text-decoration 0.3s ease; /* Smooth transitions */
+}
+
+.legal-links a:hover {
+    color: #FFFFFF; /* White text color on hover */
+    text-decoration: underline; /* Adds underline on hover */
+}
